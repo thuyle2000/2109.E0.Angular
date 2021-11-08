@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>angular js</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="js/angular.min.js"></script>
+</head>
+<body>
+    <div class="container" ng-app="abc">
+        <h2>AngularJS Demo</h2>
+        <hr>
+        <div ng-controller="salavi">
+            <label for="">Input your year of birth: </label>
+            <input type="number"  ng-model="yob" min="1960" > <br>
+            <p>Your age: {{2021-yob}}</p>
+        </div>
+    </div>
+</body>
+<script>
+//lap trinh cho ung dung angular js
+//tao bien dai dien cho ung dung angular js
+var app = angular.module("abc",[]);
+
+//lap trinh cho controller co ten la salavi
+app.controller("salavi", function($scope){
+    $scope.yob=2006;
+});
+
+
+</script>
+</html>
