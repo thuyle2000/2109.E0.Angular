@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>custom-filter</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="js/angular.min.js"></script>
+</head>
+<body>
+    <div class="container" ng-app="myAPP" ng-controller="myCTR">
+        <h2>Custom Filter Demo</h2>
+        <hr>
+        <p>Input mark : <input type="number" ng-model="diem"></p>
+        <ol>
+            <li ng-repeat= "x in ds|Greater:diem">
+                <span ng-bind="x"></span>
+            </li>
+        </ol>
+
+
+    </div>
+    <script>
+        let app= angular.module("myAPP", []);
+
+        app.controller("myCTR", function($scope){
+            $scope.ds = [
+                {id:"S01", name:"sar lavi", mark:70},
+                {id:"S02", name:"ngoc huyen", mark:100},
+                {id:"S03", name:"nguyen toan", mark:99},
+                {id:"S04", name:"truc duy", mark:90},
+                {id:"S05", name:"dam quan", mark:86},
+                {id:"S06", name:"van khoa", mark:75},
+                {id:"S07", name:"thanh long", mark:45},
+                {id:"S08", name:"ngoc tram", mark:65}
+            ];
+        });
+
+        app.filter("Greater", function(){
+            return function(list, v){
+                let output=[];  //tap ket qua tra ve cua chuc nang search
+
+                if(isNaN(v)){
+                    output = list;
+                }
+                else{
+                    list.forEach(element => {
+                        if(element.mark>=v) {
+                            output.push(element);
+                        }
+                    });
+                }
+                return output;
+            }
+        });
+    </script>
+</body>
+</html>
