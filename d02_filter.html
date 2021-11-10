@@ -1,35 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>filter-date</title>
+    <title>build-in-filter</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="js/angular.min.js"></script>
 </head>
+
 <body>
-    <div class="container" ng-app="myAPP" >
-        <h2>AngularJS Filter-Date Demo</h2>
+    <div class="container" ng-app="myAPP">
+        <h2>Build-in filter uppercase|lowercase|json demo </h2>
         <hr>
         <div ng-controller="myCONTROL">
-            today | date = {{today|date}} <br>
-            today | date:'short' = {{today|date:'short'}} <br>
-            today | date:'medium' = {{today|date:'medium'}} <br>
-            today | date:'fullDate' = {{today|date:'fullDate'}} <br>
-            today | date:'yyyy' = {{today|date:'yyyy'}} <br><br>
-            today | date:'shortTime' = {{today|date:'shortTime'}} <br>
-            today | date:'mediumTime' = {{today|date:'mediumTime'}} <br>
+            Student ID: {{sv.id}} <br>
+            Student Name: {{sv.name}} <br>
+            Student Name (sv.name|lowercase) : {{sv.name|lowercase}} <br>
+            Student Name (sv.name|uppercase) : {{sv.name|uppercase}} <br><br>
+
+            <pre>
+            Student (sv|json): {{sv|json}} <br>
+            Student (sv|json:10): {{sv|json:10}} <br>
+            </pre>
         </div>
     </div>
+
+    <script>
+        let app = angular.module("myAPP", []);
+        app.controller("myCONTROL", function ($scope) {
+            $scope.sv = { id: "SV01", name: "Sar Lavi", mark: 70 };
+        });
+    </script>
 </body>
-<script>
-    let app = angular.module("myAPP",[]);
-    app.controller('myCONTROL', function($scope){
-        $scope.today = new Date();
-    });
-</script>
+
 </html>
