@@ -104,6 +104,10 @@
                 $scope.ds = response.data;
             });
 
+            $http.get("http://ergast.com/api/f1/2019/circuits.json").then(function(response){
+                console.log(response.data.MRData.CircuitTable.Circuits);
+            });
+            
 
             $scope.addRow=function(){
                 $scope.ds.push({"id":$scope.id, "name":$scope.name, "mark":$scope.mark});
