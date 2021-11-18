@@ -40,8 +40,8 @@
                         templateUrl: "food.html"
                     })
                     .when("/add", {
-                        templateUrl: "add.html", 
-                        controller:"addCTR"
+                        templateUrl: "add.html",
+                        controller: "addCTR"
                     })
 
             });
@@ -53,6 +53,13 @@
                     $scope.ds = response.data;
                     console.log($scope.ds)
                 });
+
+                $scope.remove = function (index) {
+                    if (confirm('are u sure ?')) {
+                        $scope.ds.splice(index, 1)
+                    }
+
+                }
             });
 
 
